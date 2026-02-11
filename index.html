@@ -1,245 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gonçalo Matias – Generative AI for Work & Research</title>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/02/11/15/20260211154729-FZV5ZH5A.js" defer></script>
+    <style>
+        :root {
+            --bg-main: #f7f9fc;
+            --bg-soft: #eef3fb;
+            --accent: #2563eb;
+            --accent-2: #38bdf8;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-bg: #ffffff;
+            --border-soft: #dbeafe;
+        }
 
-  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2026/02/11/15/20260211154729-FZV5ZH5A.js" defer></script>
+        * {
+            box-sizing: border-box;
+        }
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gonçalo Matias – Generative AI for Work & Research</title>
-  <style>
-    :root {
-      --bg-main: #f7f9fc;
-      --bg-soft: #eef3fb;
-      --accent: #2563eb;
-      --accent-2: #38bdf8;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --card-bg: #ffffff;
-      --border-soft: #dbeafe;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(180deg, #c7dbff 0%, #eaf1ff 45%, #f7faff 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-    html { scroll-behavior: smooth; }
+        header {
+            padding: 4.5rem 2rem 3.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #c7dbff 0%, #eaf1ff 45%, #f7faff 100%);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+        @media (max-width: 900px) {
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
 
-    header {
-      padding: 4.5rem 2rem 3.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
-      align-items: center;
-    }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin: 0 0 1rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    @media (max-width: 900px) {
-      header { grid-template-columns: 1fr; text-align: center; }
-    }
+        .hero p {
+            color: var(--text-muted);
+            max-width: 560px;
+        }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      margin: 0 0 1rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .nav-buttons {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
 
-    .hero p {
-      color: var(--text-muted);
-      max-width: 560px;
-    }
+        .nav-buttons a {
+            text-decoration: none;
+            padding: 0.65rem 1.6rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            color: var(--accent);
+            background: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 120px;
+            text-align: center;
+        }
 
-    .nav-buttons {
-      margin-top: 1.8rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: nowrap;
-      align-items: center;
-    }
+        .nav-buttons a:hover {
+            background: var(--accent);
+            color: #ffffff;
+        }
 
-    .nav-buttons a {
-      text-decoration: none;
-      padding: 0.65rem 1.6rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      color: var(--accent);
-      background: #ffffff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      min-width: 120px;
-      text-align: center;
-    }
+        .hero-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 999px;
+            border: 4px solid var(--accent-2);
+            box-shadow: 0 20px 40px rgba(15,23,42,0.15);
+        }
 
-    .nav-buttons a:hover {
-      background: var(--accent);
-      color: #ffffff;
-    }
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .hero-image {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 999px;
-      border: 4px solid var(--accent-2);
-      box-shadow: 0 20px 40px rgba(15,23,42,0.15);
-    }
+        section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(15,23,42,0.08);
+        }
 
-    section h2 {
-      font-size: 1.9rem;
-      margin-bottom: 2rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
-      border-radius: 18px;
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(15,23,42,0.08);
-    }
+        /* About me */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
+        @media (max-width: 900px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
 
-    @media (max-width: 900px) {
-      .profile-grid { grid-template-columns: 1fr; }
-    }
+        .skill {
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
+            padding: 1.1rem;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
 
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
+        .skill span {
+            font-size: 1.1rem;
+            color: var(--accent);
+            width: 22px;
+            text-align: center;
+        }
 
-    .skill {
-      border: 1px solid var(--border-soft);
-      border-radius: 14px;
-      padding: 1.1rem;
-      background: rgba(255,255,255,0.05);
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
-      font-size: 0.9rem;
-    }
+        /* Modules */
+        details {
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            background: #ffffff;
+        }
 
-    .skill span {
-      font-size: 1.1rem;
-      color: var(--accent);
-      width: 22px;
-      text-align: center;
-    }
+        details summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+        }
 
-    details {
-      border: 1px solid var(--border-soft);
-      border-radius: 16px;
-      padding: 1.4rem 1.6rem;
-      background: #ffffff;
-    }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
 
-    details summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-weight: 600;
-      list-style: none;
-    }
+        details p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
 
-    details summary::-webkit-details-marker { display: none; }
+        .expand-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
 
-    details p {
-      color: var(--text-muted);
-      margin-top: 1rem;
-    }
+        details[open] .expand-btn {
+            background: var(--accent);
+            color: #ffffff;
+        }
 
-    .expand-btn {
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: #ffffff;
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
+        /* Submissions */
+        .week {
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-soft);
+            background: #ffffff;
+        }
 
-    details[open] .expand-btn {
-      background: var(--accent);
-      color: #ffffff;
-    }
+        .week h3 {
+            margin-top: 0;
+            font-size: 1.05rem;
+            color: var(--accent);
+        }
 
-    .week {
-      padding: 1.5rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-soft);
-      background: #ffffff;
-    }
+        .week span {
+            font-size: 1.4rem;
+            margin-right: 0.4rem;
+        }
 
-    .week h3 {
-      margin-top: 0;
-      font-size: 1.05rem;
-      color: var(--accent);
-    }
-
-    .week span {
-      font-size: 1.4rem;
-      margin-right: 0.4rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 3rem 1.5rem 4rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
+    <!-- TOP BAR / HERO -->
+    <header style="padding:2.5rem 2rem 2rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+            <img src="https://github.com/Goncalo-coder/graph-ai-portfolio-1/blob/main/Goncalo.jpg?raw=true" alt="Gonçalo Matias portrait" class="hero-image" />
+            <div style="flex:1; min-width:260px; margin-left:2.5rem;">
+                <h1>Gonçalo Matias</h1>
+                <p style="max-width:700px; color:var(--text-muted); margin-left:1.5rem;">
+                    Senior epidemiologist with international experience in vaccines, epidemic preparedness and infectious disease research. Portfolio for the <strong>Generative AI for Work & Research</strong> course.
+                </p>
+                <div class="nav-buttons" style="margin-left:2.5rem; justify-content:flex-end;">
+                    <a href="#about">About me</a>
+                    <a href="#course">The course</a>
+                    <a href="#submissions">Submissions</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<!-- TOP BAR / HERO -->
-<header style="padding:2.5rem 2rem 2rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start;">
-  <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-    <img src="https://github.com/Goncalo-coder/graph-ai-portfolio-1/blob/main/Goncalo.jpg?raw=true" alt="Gonçalo Matias portrait" class="hero-image" />
-    <div style="flex:1; min-width:260px; margin-left:2.5rem;">
-      <h1>Gonçalo Matias</h1>
-      <p style="max-width:700px; color:var(--text-muted); margin-left:1.5rem;">
-        Senior epidemiologist with international experience in vaccines, epidemic preparedness and infectious disease research. Portfolio for the <strong>Generative AI for Work & Research</strong> course.
-      </p>
-      <div class="nav-buttons" style="margin-left:2.5rem; justify-content:flex-end;">
-        <a href="#about">About me</a>
-        <a href="#course">The course</a>
-        <a href="#submissions">Submissions</a>
-      </div>
-    </div>
-  </div>
-</header>
+    <!-- ABOUT ME -->
+    <section id="about">
+        <div class="card">
+            <h2>About Me</h2>
+            <div class="profile-grid">
+                <div>
+                    <p>
+                        Senior epidemiologist with nearly 20 years of experience across public health institutes, academia, and the vaccine industry, with a strong focus on vaccines, epidemic preparedness, and infectious disease surveillance in international settings.
+                    </p>
+                    <p style="margin-bottom:0;">
+                        This portfolio documents how I apply Generative AI tools to improve research workflows, automate analysis, and enhance scientific communication.
+                    </p>
+                </div>
+                <div class="skills">
+                    <div class="skill"><span>🛡️</span> Vaccine Effectiveness & Safety</div>
+                    <div class="skill"><span>📡</span> Disease Surveillance</div>
+                    <div class="skill"><span>🌍</span> International Field Epidemiology</div>
+                    <div class="skill"><span>🧠</span> AI for Research</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Rest of your document remains unchanged -->
+    <!-- COURSE -->
+    <section id="course">
+        <div class="card">
+            <h2>About the Course</h2>
+            <p style="margin-top:0; color:var(--text-muted); max-width:720px;">
+                An 8‑week live cohort course designed for researchers and knowledge workers who want to apply Generative AI in a practical, structured way. The course combines conceptual grounding with hands‑on experimentation, focusing on no‑code tools to automate analysis, accelerate literature reviews, and improve scientific communication.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem;">
+                <details>
+                    <summary>
+                        <span><strong>Module 1 — Websites, Documents & Presentations</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>LLM fundamentals and how large language models generate text</li>
+                        <li>Generating Markdown, LaTeX, and HTML documents</li>
+                        <li>Building simple research websites with no‑code tools</li>
+                        <li>AI‑assisted presentations and posters for scientific communication</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 2 — AI‑Automated Data Analysis</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>Using ChatGPT Code Interpreter for exploratory analysis</li>
+                        <li>Cleaning and transforming datasets with AI tools</li>
+                        <li>Automated visualizations and reporting workflows</li>
+                        <li>Dashboards and recurring analysis pipelines</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 3 — GenAI for Research & Text Analysis</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>Efficient literature reviews with AI‑assisted tools</li>
+                        <li>Document summarization and knowledge extraction</li>
+                        <li>Text classification and sentiment analysis</li>
+                        <li>Knowledge synthesis from large text collections</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 4 — Custom GPTs & Chatbots</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>Understanding LLM chat architecture and context windows</li>
+                        <li>Building custom GPTs for specific research tasks</li>
+                        <li>Retrieval‑augmented generation (RAG) systems</li>
+                        <li>Interactive research assistants and chatbots</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 5 — AI for Task Automation</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>Designing AI‑driven automation workflows</li>
+                        <li>Email and administrative task automation</li>
+                        <li>Agent‑based systems for complex processes</li>
+                        <li>Orchestrating multi‑step AI workflows</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 6 — GenAI for Communication & Outreach</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>AI‑generated research summaries for different audiences</li>
+                        <li>Designing scientific figures and visuals with AI</li>
+                        <li>AI‑assisted presentations and explanatory content</li>
+                        <li>Strategies for research dissemination and outreach</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <span><strong>Module 7 — Capstone Project & Showcase</strong></span>
+                        <span class="expand-btn">Expand</span>
+                    </summary>
+                    <ul>
+                        <li>Scoping and designing a real‑world AI solution</li>
+                        <li>Iterative development with peer and instructor feedback</li>
+                        <li>Troubleshooting and refining AI workflows</li>
+                        <li>Final presentation and project showcase</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </section>
 
+    <!-- SUBMISSIONS -->
+    <section id="submissions">
+        <div class="card">
+            <h2>Weekly Submissions</h2>
+            <div class="grid" style="margin-top:2rem;">
+                <div class="week">
+                    <h3>🧠 Week 1</h3>
+                    <p>LLM fundamentals and structured document generation.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>📄 Week 2</h3>
+                    <p>AI-assisted documents, presentations, and simple websites.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>📊 Week 3</h3>
+                    <p>Automated data analysis, visualization, and reporting workflows.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>📚 Week 4</h3>
+                    <p>Literature reviews, summarization, and text analysis with GenAI.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>🎨 Week 5</h3>
+                    <p>Design and testing of custom GPTs and research assistants.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>⚙️ Week 6</h3>
+                    <p>AI-driven workflow automation and task orchestration.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>📢 Week 7</h3>
+                    <p>Scientific communication, visuals, and research outreach.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+                <div class="week">
+                    <h3>🏁 Week 8</h3>
+                    <p>Capstone project design, implementation, and presentation.</p>
+                    <div class="nav-buttons"><a href="#">Add submission</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 · Generative AI for Work & Research Portfolio</p>
+    </footer>
 </body>
 </html>
