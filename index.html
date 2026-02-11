@@ -230,9 +230,37 @@
             color: var(--text-muted);
             font-size: 0.9rem;
         }
+
+        /* ── Text label above chatbot widget ── */
+        .chat-label {
+            position: fixed;
+            bottom: 90px;
+            right: 16px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(37,99,235,0.3);
+            z-index: 9998;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .chat-label::after {
+            content: "";
+            position: absolute;
+            bottom: -7px;
+            right: 18px;
+            border: 7px solid transparent;
+            border-top-color: var(--accent);
+        }
     </style>
 </head>
 <body>
+    <!-- Text label above chatbot widget -->
+    <div class="chat-label">💬 Ask me about Gonçalo's background!</div>
+
     <!-- TOP BAR / HERO -->
     <header style="padding:2.5rem 2rem 2rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
